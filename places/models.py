@@ -15,3 +15,16 @@ class Post(models.Model):
     class Meta:
         verbose_name = 'Пост'
         verbose_name_plural = 'Посты'
+
+
+class Pic(models.Model):
+    numb = models.IntegerField(verbose_name="Порядковый номер:")
+    title = models.ForeignKey(Post, on_delete=models.CASCADE, verbose_name="Заголовок", related_name='posts')
+    picturies = models.ImageField(verbose_name="Картинка", upload_to='img', blank=True)
+
+    def __str__(self):
+        return f'{self.numb} {self.title}'
+
+    class Meta:
+        verbose_name = 'Картинка'
+        verbose_name_plural = 'Картинки'
