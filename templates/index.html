@@ -1,9 +1,20 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
-    <title>Стартовая</title>
+    <title>Куда пойти — Москва глазами Артёма</title>
 {% endblock title %}
 
+{% block script %}
+   {% include "script.html" %} 
+{% endblock script %}
+
+
 {% block content %}
-     <h1>Здесь будет карта</h1>
+  <div id="sidebar">
+    <div id="sidebar-app"></div>
+  </div>
+
+  <div id="map"></div>
+
 {% endblock content %}
