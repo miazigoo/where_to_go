@@ -1,6 +1,6 @@
 {% load static %}
 
-  {{ places_posts|json_script:"places-geojson" }}
+    {{ places_posts|json_script:"places-geojson"|safe }}
 
 
   <script id="app-template" type="text/template">
