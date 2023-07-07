@@ -97,7 +97,9 @@ python manage.py runserver
 ### Редактор текста
 В админ-панели доступен редактор текста
 
-![скрин](None)
+![редактор](https://github.com/miazigoo/where_to_go/assets/55626306/44605f91-18cb-4921-b71a-aaa59ddea4ff)
+
+
 
 ### Цель проекта
 
