@@ -16,7 +16,7 @@ class Post(models.Model):
     slug = models.SlugField('Название в виде url', max_length=200, blank=True, null=True)
 
     def __str__(self):
-        return f'pk:{self.pk}  {self.title}'
+        return f'{self.title}'
 
     class Meta:
         verbose_name = 'Пост'
@@ -34,6 +34,7 @@ class Pic(models.Model):
     class Meta:
         verbose_name = 'Картинка'
         verbose_name_plural = 'Картинки'
+        ordering = ['numb']
 
     @property
     def photo_preview(self):
@@ -44,5 +45,3 @@ class Pic(models.Model):
     @property
     def get_absolute_image_url(self):
         return "{0}{1}".format(settings.MEDIA_URL, self.picturies.url)
-
-
