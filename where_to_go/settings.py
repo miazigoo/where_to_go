@@ -36,8 +36,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'places',
-    'ckeditor',
-    'ckeditor_uploader',
     'adminsortable2',
     'tinymce',
 ]
@@ -129,12 +127,9 @@ CKEDITOR_CONFIGS = {
     }
 }
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-TINYMCE_JS_URL = 'http://debug.example.org/tiny_mce/tiny_mce_src.js'
 TINYMCE_DEFAULT_CONFIG = {
     "height": "320px",
     "width": "960px",
@@ -147,17 +142,5 @@ TINYMCE_DEFAULT_CONFIG = {
     "fullscreen  preview save print | insertfile image media pageembed template link anchor codesample | "
     "a11ycheck ltr rtl | showcomments addcomment code",
     "custom_undo_redo_levels": 10,
-    "language": "es_ES",  # To force a specific language instead of the Django current language.
+    "language": "ru_RU",  # To force a specific language instead of the Django current language.
 }
-TINYMCE_SPELLCHECKER = True
-TINYMCE_COMPRESSOR = True
-# TINYMCE_EXTRA_MEDIA = {
-#     'css': {
-#         'all': [
-#             ...
-#         ],
-#     },
-#     'js': [
-#         ...
-#     ],
-# }

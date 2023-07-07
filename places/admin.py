@@ -1,8 +1,6 @@
 from adminsortable2.admin import SortableAdminBase, SortableInlineAdminMixin
 from django.contrib import admin
 from adminsortable.utils import get_is_sortable
-from django.db import models
-from tinymce.widgets import TinyMCE
 
 from places.models import Post, Pic
 
@@ -32,15 +30,12 @@ class PostAdmin(SortableAdminBase, admin.ModelAdmin):
     fields = ["title", "description_short", "description_long", "lat", "lon", "point_lon", "point_lat", "slug"]
     list_display = ['pk', 'title']
     inlines = [PicsInline, ]
-    # formfield_overrides = {
-    #     models.TextField: {'widget': TinyMCE()}
-    # }
 
-    # class Media:
-    #     js = (
-    #         '/static/tiny_mce/tiny_mce.js',
-    #         '/static/tiny_mce/tiny_mce_init.js',
-    #     )
+    class Media:
+        js = (
+            '/static/tiny_mce/tiny_mce.js',
+            '/static/tiny_mce/tiny_mce_init.js',
+        )
 
 
 @admin.register(Pic)
@@ -48,7 +43,6 @@ class PicAdmin(admin.ModelAdmin):
     list_display = ['numb', "title", "photo_preview"]
     ordering = ['numb', ]
     readonly_fields = ["photo_preview"]
-    # actions = [make_numb]
 
     def photo_preview(self, obj):
         return obj.photo_preview
