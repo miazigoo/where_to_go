@@ -1,5 +1,5 @@
 from django.db import models
-from ckeditor_uploader.fields import RichTextUploadingField
+from tinymce.models import HTMLField
 from django.utils.safestring import mark_safe
 
 from where_to_go import settings
@@ -8,7 +8,7 @@ from where_to_go import settings
 class Post(models.Model):
     title = models.CharField('Заголовок', max_length=200)
     description_short = models.TextField('Короткое описание')
-    description_long = RichTextUploadingField('Полное описание')
+    description_long = HTMLField('Полное описание')
     lat = models.FloatField(verbose_name="Широта")
     lon = models.FloatField(verbose_name="Долгота")
     point_lon = models.FloatField(verbose_name="Долгота точки", blank=True, null=True)
