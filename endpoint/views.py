@@ -24,5 +24,5 @@ def details_json(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post_data = serialize_post(post)
     output = JsonResponse(post_data, safe=False, json_dumps_params={'ensure_ascii': False, 'indent': 4})
-    return HttpResponse(output, content_type="application/json")
-
+    # return HttpResponse(output, content_type="application/json")
+    return JsonResponse(post_data, safe=False, json_dumps_params={'ensure_ascii': False, 'indent': 4})
