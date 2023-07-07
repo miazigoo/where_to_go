@@ -3,7 +3,7 @@
 Сайт показывает на карте интересные для посещения места.
 
 ### Посмотреть пример сайта на:
-https://miazigoo.github.io/Parsing_online_Library/pages/index_1.html
+https://kasper6024.pythonanywhere.com
 
 ![скрин](https://github.com/devmanorg/where-to-go-frontend/raw/master/.gitbook/assets/site.png)
 
