@@ -43,26 +43,21 @@ def upload_data_to_db(url):
         img_name, _ = get_filename_and_ext(img_url)
         img_names.append(img_name)
         download_img(img_url, img_name, img_path)
-    title = json_data["title"]
-    description_short = json_data["description_short"]
-    description_long = json_data["description_long"]
-    lng = json_data["coordinates"]["lng"]
-    lat = json_data["coordinates"]["lat"]
     post = Post.objects.create(
-        title=title,
-        description_short=description_short,
-        description_long=description_long,
-        lat=lat,
-        lon=lng,
-        point_lon=lng,
-        point_lat=lat
+        title=json_data["title"],
+        description_short=json_data["description_short"],
+        description_long=json_data["description_long"],
+        lat=json_data["coordinates"]["lat"],
+        lon=json_data["coordinates"]["lng"],
+        point_lon=json_data["coordinates"]["lng"],
+        point_lat=json_data["coordinates"]["lat"]
     )
     for img in img_names:
         img_upload = Pic.objects.create(title=post)
         with open(f'{img_path}/{img}', 'rb') as f:
             file = f.read()
             img_upload.picturies.save(img, ContentFile(file), save=True)
-    return 'OK'
+
 
 
 class Command(BaseCommand):
