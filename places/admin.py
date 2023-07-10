@@ -41,8 +41,8 @@ class PostAdmin(SortableAdminBase, admin.ModelAdmin):
 
 @admin.register(Pic)
 class PicAdmin(admin.ModelAdmin):
-    list_display = ['numb', "title", "photo_preview"]
-    ordering = ['numb', ]
+    list_display = ['sequence_number', "title", "photo_preview"]
+    ordering = ['sequence_number', ]
     readonly_fields = ["photo_preview"]
 
     def photo_preview(self, obj):

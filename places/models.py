@@ -24,24 +24,24 @@ class Post(models.Model):
 
 
 class Pic(models.Model):
-    numb = models.IntegerField(verbose_name="Порядковый номер:", blank=True, null=True)
+    sequence_number = models.IntegerField(verbose_name="Порядковый номер:", blank=True, null=True)
     title = models.ForeignKey(Post, on_delete=models.CASCADE, verbose_name="Заголовок", related_name='pics')
-    picturies = models.ImageField(verbose_name="Картинка", upload_to='img', blank=True)
+    image = models.ImageField(verbose_name="Картинка", upload_to='img', blank=True)
 
     def __str__(self):
-        return f'{self.numb} {self.title}'
+        return f'{self.sequence_number} {self.title}'
 
     class Meta:
         verbose_name = 'Картинка'
         verbose_name_plural = 'Картинки'
-        ordering = ['numb']
+        ordering = ['sequence_number']
 
     @property
     def photo_preview(self):
-        if self.picturies:
-            return mark_safe('<img src="{}" height="200" />'.format(self.picturies.url))
+        if self.image:
+            return mark_safe('<img src="{}" height="200" />'.format(self.image.url))
         return ""
 
     @property
     def get_absolute_image_url(self):
-        return "{0}{1}".format(settings.MEDIA_URL, self.picturies.url)
+        return "{0}{1}".format(settings.MEDIA_URL, self.image.url)

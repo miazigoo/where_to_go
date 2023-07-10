@@ -8,7 +8,7 @@ def serialize_post(post):
     post = {
         "title": post.title,
         "imgs": [
-            f'{pic.picturies.url}' for pic in post.pics.all().order_by('numb')
+            f'{pic.image.url}' for pic in post.pics.all().order_by('sequence_number')
         ],
         "description_short": post.short_description,
         "description_long": post.long_description,
