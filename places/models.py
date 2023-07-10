@@ -8,8 +8,8 @@ from pytils.translit import slugify
 
 class Post(models.Model):
     title = models.CharField('Заголовок', max_length=200)
-    description_short = models.TextField('Короткое описание')
-    description_long = HTMLField('Полное описание')
+    short_description = models.TextField('Короткое описание')
+    long_description = HTMLField('Полное описание')
     lat = models.FloatField(verbose_name="Широта")
     lon = models.FloatField(verbose_name="Долгота")
     point_lon = models.FloatField(verbose_name="Долгота точки", blank=True, null=True)

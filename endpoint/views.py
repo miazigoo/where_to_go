@@ -10,8 +10,8 @@ def serialize_post(post):
         "imgs": [
             f'{pic.picturies.url}' for pic in post.pics.all().order_by('numb')
         ],
-        "description_short": post.description_short,
-        "description_long": post.description_long,
+        "description_short": post.short_description,
+        "description_long": post.long_description,
         "coordinates": {
             "lng": post.lon,
             "lat": post.lat
