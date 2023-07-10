@@ -3,12 +3,13 @@ from os.path import splitext, split
 from pathlib import Path
 from urllib.parse import urlsplit, unquote
 
+from pytils.translit import slugify
+
 from places.models import Post, Pic
 from where_to_go import settings
 import requests
 from django.core.management.base import BaseCommand
 from django.core.files.base import ContentFile
-
 
 base_path = settings.BASE_DIR
 
@@ -43,8 +44,11 @@ def upload_data_to_db(url):
         img_name, _ = get_filename_and_ext(img_url)
         img_names.append(img_name)
         download_img(img_url, img_name, img_path)
+    title = json_data["title"]
+    slug = slugify(title)
     post = Post.objects.create(
-        title=json_data["title"],
+        title=title,
+        slug=slug,
         description_short=json_data["description_short"],
         description_long=json_data["description_long"],
         lat=json_data["coordinates"]["lat"],
@@ -59,7 +63,6 @@ def upload_data_to_db(url):
             img_upload.picturies.save(img, ContentFile(file), save=True)
 
 
-
 class Command(BaseCommand):
     help = 'Загружаем данные в БД'
 
@@ -72,9 +75,8 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         parser = argparse.ArgumentParser(
-                    description="""
+            description="""
                     Программа загружает в БД по ссылке  на json файл
                     """, allow_abbrev=False)
         url = self.add_arguments(parser)[1]
         upload_data_to_db(url)
-

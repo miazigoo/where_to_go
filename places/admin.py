@@ -27,6 +27,7 @@ class PicsInline(SortableInlineAdminMixin, admin.TabularInline):
 
 @admin.register(Post)
 class PostAdmin(SortableAdminBase, admin.ModelAdmin):
+    prepopulated_fields = {"slug": ("title",)}
     fields = ["title", "short_description", "long_description", "lat", "lon", "point_lon", "point_lat", "slug"]
     list_display = ['pk', 'title']
     inlines = [PicsInline, ]
