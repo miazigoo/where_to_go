@@ -3,7 +3,6 @@ from tinymce.models import HTMLField
 from django.utils.safestring import mark_safe
 
 from where_to_go import settings
-from pytils.translit import slugify
 
 
 class Post(models.Model):
@@ -31,14 +30,6 @@ class Pic(models.Model):
 
     def __str__(self):
         return f'{self.numb} {self.title}'
-
-    def save(self, *args, **kwargs):
-        """
-        Сохранение полей модели при их отсутствии заполнения
-        """
-        if not self.numb:
-            self.numb = self.pk
-        super().save(*args, **kwargs)
 
     class Meta:
         verbose_name = 'Картинка'
